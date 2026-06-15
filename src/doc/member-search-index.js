@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"base","c":"TemperatureConverter","l":"celsiusToFahrenheit(double)"},{"p":"base","c":"TemperatureConverter","l":"fahrenheitToCelsius(double)"},{"p":"base","c":"TemperatureConverter","l":"TemperatureConverter()","u":"%3Cinit%3E()"}];updateSearchResults();
