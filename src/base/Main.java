@@ -10,8 +10,12 @@ public class Main {
      * @author Arthur Fedveresh
      * @param args entry point arguments
      */
+
     public static void main(String[] args) {
 
-        System.out.printf("Hello! My name is Arthur\nI am 29 years old \nAnd I like optimised programming languages like Java and C++");
+        System.out.println("Hello! My name is Arthur");
+        System.out.println("I am 29 years old");
+        System.out.println("And I like optimised programming languages like Java and C++");
+
     }
 }
