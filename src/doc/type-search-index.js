@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"base","l":"ArrayMerge"},{"p":"base","l":"ArrayOps"},{"p":"base","l":"ArraySearch"},{"p":"base","l":"ArrayStats"},{"p":"base","l":"Main"}];updateSearchResults();
