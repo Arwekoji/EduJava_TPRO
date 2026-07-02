@@ -7,7 +7,6 @@ public class TemperatureConverter {
 
     final double ABSOLUTE_ZERO_CELSIUS = -273.15;
     final double BOILING_POINT_CELSIUS = 100.0;
-    boolean isAboveBoiling = false;
 
     /**
      * function celsiusToFahrenheit
