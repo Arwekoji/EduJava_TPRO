@@ -1,7 +1,6 @@
 package base;
 
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 
 /**
  * Точка входа
@@ -9,6 +8,10 @@ import java.sql.SQLOutput;
  * @author Артур Федьвереш
  */
 public class Main {
+    static final double CELSIUS_BOILING_WATER = 100;
+    static final double CELSIUS_FREEZE_WATER = 0;
+    static final double CELSIUS_BODY_TEMPERATURE = 37;
+    static final double CELSIUS_CROSS_FAHRENHEIT = -40;
     /**
      * Точка входа в программу
      *
@@ -34,14 +37,14 @@ public class Main {
         System.out.println("- - - -");
 
         TempConverter TC = new TempConverter();
-        TC.convertC2F(100);
-        TC.convertC2K(100);
-        TC.convertC2F(0);
-        TC.convertC2K(0);
-        TC.convertC2F(37);
-        TC.convertC2K(37);
-        TC.convertC2F(-40);
-        TC.convertC2K(-40);
+        TC.convertC2F(CELSIUS_BOILING_WATER);
+        TC.convertC2K(CELSIUS_BOILING_WATER);
+        TC.convertC2F(CELSIUS_FREEZE_WATER);
+        TC.convertC2K(CELSIUS_FREEZE_WATER);
+        TC.convertC2F(CELSIUS_BODY_TEMPERATURE);
+        TC.convertC2K(CELSIUS_BODY_TEMPERATURE);
+        TC.convertC2F(CELSIUS_CROSS_FAHRENHEIT);
+        TC.convertC2K(CELSIUS_CROSS_FAHRENHEIT);
         System.out.println("Интересный факт: -40 градусов это точка пересечения шкал Цельсия и Фаренгейта, т.е. в этой точке обозначение температур одинаковое");
     }
 

@@ -6,6 +6,8 @@ package base;
  * @author Артур Федьвереш
  */
 public class TempConverter {
+    final double KELVIN_CONST = 273.15;
+
 
     /**
      * Метод, выдающий результат конвертации температуры по Цельсию в Фаренгейты, сразу в консоль
@@ -25,7 +27,7 @@ public class TempConverter {
      * @param celsius - Температура по Цельсию, тип double
      */
     public void convertC2K(double celsius) {
-        double kelvin = celsius + 273.15;
+        double kelvin = celsius + KELVIN_CONST;
         System.out.println("Температура " + celsius + "(С°) = " + kelvin + "(K)");
     }
 
