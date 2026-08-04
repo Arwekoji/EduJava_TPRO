@@ -15,17 +15,20 @@ public class Swapper {
      * @author Артур Федьвереш
      */
     public void swapInt(int a, int b) {
-        System.out.printf("Местами меняются a=%d и b=%d \n", a, b);
+        System.out.printf("Местами меняются a=%d и b=%d", a, b);
+        System.out.println();
 
         a += b;
         b = a - b;
         a = a - b;
-        System.out.printf("В результате обмена без буфера a=%d и b=%d \n", a, b);
+        System.out.printf("В результате обмена без буфера a=%d и b=%d", a, b);
+        System.out.println();
 
         int c = a;
         a = b;
         b = c;
-        System.out.printf("В результате обратного обмена с буфером мы снова видим, что a=%d и b=%d \n", a, b);
+        System.out.printf("В результате обратного обмена с буфером мы снова видим, что a=%d и b=%d", a, b);
+        System.out.println();
     }
 
 }
