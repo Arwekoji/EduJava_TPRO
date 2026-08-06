@@ -7,6 +7,9 @@ package base;
  */
 public class TempConverter {
     final double KELVIN_CONST = 273.15;
+    double lastTemperatureCelsius;
+    double lastTemperatureKelvin;
+    double lastTemperatureFahrenheit;
 
 
     /**
@@ -15,9 +18,10 @@ public class TempConverter {
      * @author Артур Федьвереш
      * @param celsius - Температура по Цельсию, тип double
      */
-    public void convertC2F(double celsius) {
-        double fahrenheit = (celsius * 9 / 5) + 32;
-        System.out.println("Температура " + celsius + "(С°) = " + fahrenheit + "(F)");
+    public void convertCelsiusToFahrenheit(double celsius) {
+        lastTemperatureFahrenheit = (celsius * 9 / 5) + 32;
+        System.out.println("Температура " + celsius + "(С°) = " + lastTemperatureFahrenheit + "(F)");
+        lastTemperatureCelsius = celsius;
     }
 
     /**
@@ -26,9 +30,10 @@ public class TempConverter {
      * @author Артур Федьвереш
      * @param celsius - Температура по Цельсию, тип double
      */
-    public void convertC2K(double celsius) {
-        double kelvin = celsius + KELVIN_CONST;
-        System.out.println("Температура " + celsius + "(С°) = " + kelvin + "(K)");
+    public void convertCelsiusToKelvin(double celsius) {
+        lastTemperatureKelvin = celsius + KELVIN_CONST;
+        System.out.println("Температура " + celsius + "(С°) = " + lastTemperatureKelvin + "(K)");
+        lastTemperatureCelsius = celsius;
     }
 
 }
