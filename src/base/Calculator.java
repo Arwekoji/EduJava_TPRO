@@ -15,7 +15,7 @@ public class Calculator {
      * @author Артур Федьвереш
      */
     public void addNum(int a, int b) {
-        System.out.println("Сложение: " + (a + b));
+        System.out.println(a + " + " + b + " = " + (a + b));
     }
 
     /**
@@ -26,7 +26,7 @@ public class Calculator {
      * @author Артур Федьвереш
      */
     public void subtract(int a, int b) {
-        System.out.println("Вычитание: " + (a - b));
+        System.out.println(a + " - " + b + " = " + (a - b));
     }
 
     /**
@@ -37,7 +37,7 @@ public class Calculator {
      * @author Артур Федьвереш
      */
     public void multiply(int a, int b) {
-        System.out.println("Умножение: " + (a * b));
+        System.out.println(a + " * " + b + " = " + (a * b));
     }
 
     /**
@@ -48,7 +48,7 @@ public class Calculator {
      * @author Артур Федьвереш
      */
     public void divideInt(int a, int b) {
-        System.out.println("Целочисленное деление: " + (a / b));
+        System.out.println("(Целочисленное) " + a + " / " + b + " = " + (a / b));
     }
 
     /**
@@ -59,7 +59,7 @@ public class Calculator {
      * @author Артур Федьвереш
      */
     public void divideDouble(double a, double b) {
-        System.out.println("Вещественное деление: " + (a / b));
+        System.out.println("(Вещественное) " + a + " / " + b + " = " + (a / b));
     }
 
     /**
@@ -70,6 +70,6 @@ public class Calculator {
      * @author Артур Федьвереш
      */
     public void getRemainder(int a, int b) {
-        System.out.println("Остаток: " + (a % b));
+        System.out.println(a + " % " + b + " = " + (a % b));
     }
 }
