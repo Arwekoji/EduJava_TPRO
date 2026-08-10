@@ -9,6 +9,7 @@ import java.math.BigDecimal;
  * @author Артур Федьвереш
  */
 public class SmartCalc {
+    static final char[] OPERATORS = {'+', '-', '*', '/', ':', '%'}; // Список возможных операций SmartCalc
 
     /**
      * Функция для получения результата арифметического действия в виде строки
@@ -19,19 +20,20 @@ public class SmartCalc {
      * @return Возвращает результат в виде строки
      * @author Артур Федьвереш
      */
-    public String calculate(BigDecimal a, char operator, BigDecimal b) {
-        if (b.equals(new BigDecimal("0")) && (operator == '/' || operator == '%'))
+    public static String calculate(BigDecimal a, char operator, BigDecimal b) {
+        if (b.equals(new BigDecimal("0")) && (operator == '/' || operator == ':' || operator == '%'))
             return "Нельзя делить на ноль!";
 
-        BigDecimal result = switch (operator) {
+        BigDecimal result = switch (operator) { // BigDecimal выбран по причине наибольшей точности и доступных диапазонов, которые необходимы в калькуляторе
             case '+' -> a.add(b);
             case '-' -> a.subtract(b);
             case '*' -> a.multiply(b);
             case '/' -> a.divide(b, 6, BigDecimal.ROUND_UP);
+            case ':' -> a.divide(b, 0, BigDecimal.ROUND_DOWN); // Целочисленное деление
             case '%' -> a.remainder(b);
             default -> throw new IllegalArgumentException("Неверно введён оператор");
         };
 
-        return result.toPlainString();
+        return result.stripTrailingZeros().toPlainString(); // Использован метод stripTrailingZeros для избавления от лишних нулей
     }
 }

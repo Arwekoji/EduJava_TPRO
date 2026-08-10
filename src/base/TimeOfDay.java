@@ -14,7 +14,7 @@ public class TimeOfDay {
      * @param hour Время суток в виде часа от 0 до 23
      * @author Артур Федьвереш
      */
-    public void analyseTime(byte hour, byte day) {
+    public static void analyse(byte hour, byte day) {
         String answer = "Сейчас ";
 
         if (hour == 23 || (hour >= 0 && hour <= 4))
