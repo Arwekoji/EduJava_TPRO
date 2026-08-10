@@ -44,8 +44,7 @@ public class ProfileBuilder {
         }
 
         System.out.print("Город: ");
-        locality = scanner.nextLine(); // Существуют города с названием из более чем одного словаА
-
+        locality = scanner.nextLine(); // Существуют города с названием из более чем одного слова, поэтому использован метод nextLine, а не next
 
     }
 
@@ -54,13 +53,19 @@ public class ProfileBuilder {
      *
      * @author Артур Федьвереш
      */
-    public void getData() {
-        System.out.printf("\n=== Профиль ===\n" +
-                "Имя: %s\n" +
-                "Возраст: %d\n" +
-                "Год рождения: %d\n" +
-                "Город: %s\n" +
-                "До пенсии (65 лет) осталось: %d лет\n",
-                (firstName + " " + lastName), age, birthYear, locality, beforePension);
+    public String toString() {
+
+        return String.format("""
+                
+                === Профиль ===
+                Имя, фамилия: %s %s
+                Возраст: %d
+                Год рождения: %d
+                Город: %s
+                До пенсии (65 лет) осталось: %d лет
+                """,
+                firstName, lastName, age, birthYear, locality, beforePension);
+
     }
+
 }
