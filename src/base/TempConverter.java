@@ -6,34 +6,30 @@ package base;
  * @author Артур Федьвереш
  */
 public class TempConverter {
-    final double KELVIN_CONST = 273.15;
-    double lastTemperatureCelsius;
-    double lastTemperatureKelvin;
-    double lastTemperatureFahrenheit;
-
 
     /**
      * Метод, выдающий результат конвертации температуры по Цельсию в Фаренгейты, сразу в консоль
      *
-     * @author Артур Федьвереш
      * @param celsius - Температура по Цельсию, тип double
      */
-    public void convertCelsiusToFahrenheit(double celsius) {
-        lastTemperatureFahrenheit = (celsius * 9 / 5) + 32;
-        System.out.println("Температура " + celsius + "(С°) = " + lastTemperatureFahrenheit + "(F)");
-        lastTemperatureCelsius = celsius;
+    public static double convertCelsiusToFahrenheit(double celsius) {
+        return (celsius * 9 / 5) + 32;
     }
 
     /**
      * Метод, выдающий результат конвертации температуры по Цельсию в Кельвины, сразу в консоль
      *
-     * @author Артур Федьвереш
      * @param celsius - Температура по Цельсию, тип double
      */
-    public void convertCelsiusToKelvin(double celsius) {
-        lastTemperatureKelvin = celsius + KELVIN_CONST;
-        System.out.println("Температура " + celsius + "(С°) = " + lastTemperatureKelvin + "(K)");
-        lastTemperatureCelsius = celsius;
+    public static double convertCelsiusToKelvin(double celsius) {
+        return celsius + 273.15; // 273.15 не магическое число, а часть известной физической формулы конвертирования температур
     }
 
 }
+
+/*
+Список замечаний по этому заданию:
+1. Это должны быть функции (return double), а не процедуры (void)
+2. Переменные lastTemperature не сделаны локальными (Ошибку осознал, но после анализа вижу, что переменные в целом излишни)
+
+ */

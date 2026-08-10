@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * @author Артур Федьвереш
  */
 public class Main {
-    static final double CELSIUS_BOILING_WATER = 100;
+    static final double CELSIUS_BOILING_WATER = 100; // Являются публичными по причине использования при вызове методов другого класса
     static final double CELSIUS_FREEZE_WATER = 0;
     static final double CELSIUS_BODY_TEMPERATURE = 37;
     static final double CELSIUS_CROSS_FAHRENHEIT = -40;
@@ -21,8 +21,7 @@ public class Main {
     public static void main(String[] args) {
         StudentProfile studentProfile = new StudentProfile();
         studentProfile.setStudentInfo('B', (short) 13, (byte) 2, 1996, 5550505L, 2.3f, 2.21, false);
-        String studentCard = studentProfile.returnStudentInfo();
-        System.out.println(studentCard);
+        System.out.println(studentProfile);
 
         System.out.println("- - - -");
 
@@ -39,15 +38,19 @@ public class Main {
 
         System.out.println("- - - -");
 
-        TempConverter tempConverter = new TempConverter();
-        tempConverter.convertCelsiusToFahrenheit(CELSIUS_BOILING_WATER);
-        tempConverter.convertCelsiusToKelvin(CELSIUS_BOILING_WATER);
-        tempConverter.convertCelsiusToFahrenheit(CELSIUS_FREEZE_WATER);
-        tempConverter.convertCelsiusToKelvin(CELSIUS_FREEZE_WATER);
-        tempConverter.convertCelsiusToFahrenheit(CELSIUS_BODY_TEMPERATURE);
-        tempConverter.convertCelsiusToKelvin(CELSIUS_BODY_TEMPERATURE);
-        tempConverter.convertCelsiusToFahrenheit(CELSIUS_CROSS_FAHRENHEIT);
-        tempConverter.convertCelsiusToKelvin(CELSIUS_CROSS_FAHRENHEIT);
+        // Код был сделан до замечаний по первой главе. Методы класса теперь static
+        System.out.printf("Конвертер: Температура %.0fС° = %.2fK или %.2fF",
+                CELSIUS_BOILING_WATER, TempConverter.convertCelsiusToKelvin(CELSIUS_BOILING_WATER), TempConverter.convertCelsiusToFahrenheit(CELSIUS_BOILING_WATER));
+        System.out.println();
+        System.out.printf("Конвертер: Температура %.0fС° = %.2fK или %.2fF",
+                CELSIUS_FREEZE_WATER, TempConverter.convertCelsiusToKelvin(CELSIUS_FREEZE_WATER), TempConverter.convertCelsiusToFahrenheit(CELSIUS_FREEZE_WATER));
+        System.out.println();
+        System.out.printf("Конвертер: Температура %.0fС° = %.2fK или %.2fF",
+                CELSIUS_BODY_TEMPERATURE, TempConverter.convertCelsiusToKelvin(CELSIUS_BODY_TEMPERATURE), TempConverter.convertCelsiusToFahrenheit(CELSIUS_BODY_TEMPERATURE));
+        System.out.println();
+        System.out.printf("Конвертер: Температура %.0fС° = %.2fK или %.2fF",
+                CELSIUS_CROSS_FAHRENHEIT, TempConverter.convertCelsiusToKelvin(CELSIUS_CROSS_FAHRENHEIT), TempConverter.convertCelsiusToFahrenheit(CELSIUS_CROSS_FAHRENHEIT));
+        System.out.println();
         System.out.println("Интересный факт: -40 градусов это точка пересечения шкал Цельсия и Фаренгейта, т.е. в этой точке обозначение температур одинаковое");
     }
 

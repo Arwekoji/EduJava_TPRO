@@ -44,10 +44,8 @@ public class StudentProfile {
 
     /**
      * Метод вывода всех данных из карточки/класса в консоль
-     *
-     * @author Артур Федьвереш
      */
-    public String returnStudentInfo() {
+    public String toString() {
 
         StringBuilder answer = new StringBuilder("Профиль Студента:\n");
         answer.append("Инициал: ").append(firstNameChar).append(" | ");
