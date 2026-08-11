@@ -37,11 +37,11 @@ public class ProfileBuilder {
         while (age < 0 || age > 150) { //Валидация на правильность данных
             System.out.print("Возраст: ");
             age = scanner.nextInt();
-            scanner.nextLine();
-            beforePension = 65 - age;
-            int currentYear = LocalDate.now().getYear();
-            birthYear = currentYear - age;
         }
+
+        beforePension = 65 - age;
+        birthYear = LocalDate.now().getYear() - age; // Определяем год рождения из текущей системной даты
+        scanner.nextLine();
 
         System.out.print("Город: ");
         locality = scanner.nextLine(); // Существуют города с названием из более чем одного слова, поэтому использован метод nextLine, а не next
