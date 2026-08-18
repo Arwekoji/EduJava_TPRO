@@ -1,6 +1,7 @@
 package base;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * Точка входа
@@ -8,9 +9,9 @@ import java.math.BigDecimal;
  * @author Артур Федьвереш
  */
 public class Main {
-    static final byte[]   TESTING_GRADES      = {95, 80, 65, 45, 100, 0, -5, 101}; // Пулл тестовых запросов для проверки класса GradeConverter в задаче #1
+    static final byte[] TESTING_GRADES = {95, 80, 65, 45, 100, 0, -5, 101}; // Пулл тестовых запросов для проверки класса GradeConverter в задаче #1
     static final String[] SMART_CALC_EXAMPLES = {"10", "6", "0"}; // Пулл тестовых членов арифметических выражений для SmartCalc
-    static final int      GUESS_GAME_TRY      = 107;
+    static final int GUESS_GAME_TRY = 107;
 
     /**
      * Точка входа
@@ -19,12 +20,12 @@ public class Main {
     public static void main(String[] args) {
         //Задача №1
         for (byte grade : TESTING_GRADES)
-            System.out.println(grade + " = " + GradeConverter.convert2TextByIf(grade) + " | " + GradeConverter.convert2TextBySwitch(grade) );
+            System.out.println(grade + " = " + GradeConverter.convert2TextByIf(grade) + " | " + GradeConverter.convert2TextBySwitch(grade));
 
         System.out.println("- - - - - -");
 
         //Задача №2
-        TimeOfDay.analyse((byte)12, (byte)6); // Час, день недели
+        TimeOfDay.analyse(LocalDateTime.now()); // Час, день недели
 
         System.out.println("- - - - - -");
 
@@ -38,7 +39,7 @@ public class Main {
                     System.out.printf("   %s %s %s = %s   |", a, i, b, SmartCalc.calculate(a, i, b));
                 }
                 System.out.println();
-        }
+            }
 
         System.out.println("- - - - - -");
 

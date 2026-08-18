@@ -15,7 +15,6 @@ public class GradeConverter {
      * @author Артур Федьвереш
      */
     public static String convert2TextByIf(byte grade) {
-
         String answer;
 
         if (grade >= 90 && grade <= 100)
@@ -30,7 +29,6 @@ public class GradeConverter {
             answer = "Недопустимая оценка";
 
         return answer + " (If)";
-
     }
 
     /**
@@ -41,6 +39,8 @@ public class GradeConverter {
      * @author Артур Федьвереш
      */
     public static String convert2TextBySwitch(byte grade) {
+        if (grade > 100 || grade < 0)
+            return "Недопустимая оценка";
 
         String convertedGrade = switch (grade / 10) {
             case 10, 9 -> "Отлично";
@@ -50,11 +50,6 @@ public class GradeConverter {
             default -> throw new IllegalArgumentException("ERROR: Недопустимая оценка");
         };
 
-        if (grade > 100 || grade < 0)
-            convertedGrade = "Недопустимая оценка";
-
         return convertedGrade + " (Switch)";
-
     }
-
 }
