@@ -13,8 +13,7 @@ public class TimeOfDay {
     /**
      * Класс для конвертации времени дня и дня недели в простое текстовое описание
      *
-     * @param day  День недели от 1 до 7
-     * @param hour Время суток в виде часа от 0 до 23
+     * @param dateTime  Информация о реальных дате и времени в формате LocalDateTime
      * @author Артур Федьвереш
      */
     public static void analyse(LocalDateTime dateTime)  {//byte hour, byte day) {
