@@ -13,7 +13,7 @@ public class DigitAnalyzer {
      * @param num Число для анализа типа int
      * @author Артур Федьвереш
      */
-    public void analyze(int num) {
+    public static void analyze(int num) {
         System.out.println("Число: " + num);
         byte digitQuantity = 0; // Даже long формат имеет меньше символов, чем вмещает максимум для Byte типа. Так зачем тратить доп память?
         int digitSum = 0;
@@ -29,7 +29,6 @@ public class DigitAnalyzer {
         }
 
         //Теперь, когда известна длина числа (ака Число цифр), можно выяснить полиндром ли это
-        numCalculated = num; // Повторно использует для вычислений
         System.out.print("Проверка пар цифр: ");
         for (byte i = 1; i <= digitQuantity / 2; i++) {
             // Вычисляем левую цифру
@@ -47,6 +46,5 @@ public class DigitAnalyzer {
         System.out.println("Сумма цифр: " + digitSum);
         System.out.println("Наибольшая цифра: " + digitMax);
         System.out.println("Это палиндром? - " + isPalindrome);
-
     }
 }

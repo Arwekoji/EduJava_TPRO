@@ -13,7 +13,7 @@ public class PrimeNumbers {
      * @param n Максимум диапазона для поиска
      * @author Артур Федьвереш
      */
-    public void getSimpleNumber(byte n) {
+    public static void getSimpleNumber(byte n) {
         for (byte i = 2; i <= n; i++) {
             boolean isPrime = true;
 

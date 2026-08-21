@@ -13,7 +13,7 @@ public class Patterns {
      * @param n Размер сторон квадрата
      * @author Артур Федьвереш
      */
-    public void square(byte n) {
+    public static void square(byte n) {
         for (byte y = 1; y <= n; y++) {
             for (byte x = 1; x <= n; x++)
                 System.out.print(" *");
@@ -28,7 +28,7 @@ public class Patterns {
      * @param n Размер катетов треугольника
      * @author Артур Федьвереш
      */
-    public void rightTriangle(byte n) {
+    public static void rightTriangle(byte n) {
         for (byte y = 1; y <= n; y++) {
             for (byte x = 1; x <= y; x++)
                 System.out.print(" *");
@@ -43,7 +43,7 @@ public class Patterns {
      * @param n Число столбцов
      * @author Артур Федьвереш
      */
-    public void pyramid(byte n) {
+    public static void pyramid(byte n) {
         if (n % 2 == 0)
             n++;
 
@@ -54,8 +54,8 @@ public class Patterns {
                 else
                     System.out.print("  ");
             }
+
             System.out.println();
         }
-
     }
 }
