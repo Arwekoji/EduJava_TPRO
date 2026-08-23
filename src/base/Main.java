@@ -6,15 +6,23 @@ package base;
  * @author Артур Федьвереш
  */
 public class Main {
+    final static String EXAMPLE_PHRASE_1 = "Hello, World! 123";
+    final static String EXAMPLE_PHRASE_2 = "Предложение для анализа, которое я введу, имеет определенную длину. Также тут должны быть вычислены самое короткое слово, самое длинное и еще несколько числовых параметров.";
     final static String[] EXAMPLE_PALINDROMES = {"racecar", "Hello", "    A man a plan a canal Panama", "Was it a car or a cat I saw"};
+    final static StudentCard[] EXAMPLE_STUDENTS = { //
+            new StudentCard("Василий Васильевич", (byte) 72, 10.00f),
+            new StudentCard("Марья Ивановна", (byte) 33, 5.75f),
+            new StudentCard("Этель Катерхем", (byte) 117, 9.99f),
+            new StudentCard("Аноним", (byte) 16, 6.66f)
+    };
+
     /**
      * Точка входа в программу
      *
      * @param args Аргументы входа в программу
      */
     public static void main(String[] args) {
-        String input = "Hello, World! 123";
-        StringAnalyser.analyse(input);
+        StringAnalyser.analyse(EXAMPLE_PHRASE_1);
         /* По поводу расхождений с примером в ТЗ:
         Даже при ручном подсчете строка "Hello, World! 123" имеет длину в 17 символов. Если бы ТЗ требовало указать индекс последнего символа, то было бы вообще 16. Если ошибка с моей стороны, то нужен совет
         Количество букв равно 10 и при ручном подсчете. ',' и '!' являются символами, а не буквами. Но если ТЗ неправильно воспринято, то можно заменить isLetter на простое условие "ЕСЛИ Это не цифра и не пробел"
@@ -22,16 +30,16 @@ public class Main {
 
         System.out.println(" - - - - - - - - -");
 
-        for(String exampleInput : EXAMPLE_PALINDROMES)
+        for (String exampleInput : EXAMPLE_PALINDROMES)
             Palindrome.check(exampleInput);
 
         System.out.println(" - - - - - - - - -");
 
-        TextStats.analyse("Предложение для анализа, которое я введу, имеет определенную длину. Также тут должны быть вычислены самое короткое слово, самое длинное и еще несколько числовых параметров.");
+        TextStats.analyse(EXAMPLE_PHRASE_2);
 
         System.out.println(" - - - - - - - - -");
 
-
+        FormattedTable.printFromList(EXAMPLE_STUDENTS);
     }
 }
 

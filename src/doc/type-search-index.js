@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"base","l":"DigitAnalyzer"},{"p":"base","l":"FizzBuzz"},{"p":"base","l":"Main"},{"p":"base","l":"Patterns"},{"p":"base","l":"PrimeNumbers"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"base","l":"FormattedTable"},{"p":"base","l":"Main"},{"p":"base","l":"Palindrome"},{"p":"base","l":"StringAnalyser"},{"p":"base","l":"StudentCard"},{"p":"base","l":"TextStats"}];updateSearchResults();
