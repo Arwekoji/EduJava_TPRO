@@ -13,8 +13,8 @@ public class FizzBuzz {
      *
      * @author Артур Федьвереш
      */
-    public static void getReplacedByteRow() {
-        for (byte i = 1; i <= 100; i++) {
+    public static void printFizzBuzz(int limit) {
+        for (int i = 1; i <= limit; i++) {
             if ((i % 3 == 0) && (i % 5 == 0))
                 System.out.print("FizzBuzz");
             else if (i % 3 == 0)

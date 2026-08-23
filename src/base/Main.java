@@ -14,11 +14,11 @@ public class Main {
      * @author Артур Федьвереш
      */
     public static void main(String[] args) {
-        FizzBuzz.getReplacedByteRow();
+        FizzBuzz.printFizzBuzz(100);
 
         System.out.println("- - - - - -");
 
-        DigitAnalyzer.analyze(5071705);
+        DigitAnalyzer.showStatsAboutNumber(5071705);
 
         System.out.println("- - - - - -");
 
@@ -30,6 +30,6 @@ public class Main {
 
         System.out.println("- - - - - -");
 
-        PrimeNumbers.getSimpleNumber((byte) 100);
+        PrimeNumbers.searchAndShowPrimeNumbers((byte) 100);
     }
 }
