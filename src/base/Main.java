@@ -6,35 +6,45 @@ package base;
  * @author Артур Федьвереш
  */
 public class Main {
+    public static String[] EXAMPLE_PHRASES = {
+            "",
+            " ",
+            "Мир ",
+            "Привет, мир",
+            "В мире очень много хорошего",
+            "   Один Два    "
+    };
+    public static String[] EXAMPLE_EMAILS = {
+            "arwekoji@gmail.com",
+            "ar wekoji@gmail.com",
+            "arwe@koji@gmailcom",
+            "arwekoji@gmailcom"
+    };
+    public static String[] EXAMPLE_PALINDROMES = {
+            "А роза упала на лапу Азора",
+            "А роза не упала на лапу Азора"
+    };
 
     /**
      * Точка входа в программу
      *
      * @param args аргументы точки входа
-     * @author Артур Федьвереш
      */
     public static void main(String[] args) {
-
         // ЗАДАЧА №1
-        System.out.println("Число слов: " + TextProcessor.countWords(""));
-        System.out.println("Число слов: " + TextProcessor.countWords(" "));
-        System.out.println("Число слов: " + TextProcessor.countWords("Мир "));
-        System.out.println("Число слов: " + TextProcessor.countWords("Привет, мир"));
-        System.out.println("Число слов: " + TextProcessor.countWords("В мире очень много хорошего"));
-        System.out.println("Число слов: " + TextProcessor.countWords("   Один Два    "));
+        for (String examplePhrase : EXAMPLE_PHRASES)
+            System.out.println("Фраза \"" + examplePhrase + "\". Число слов в ней: " + TextProcessor.countWords(examplePhrase));
 
         System.out.println("- - - - - -");
 
         // ЗАДАЧА №2
-        System.out.println("\"arwekoji@gmail.com\" это email? " + TextProcessor.isValidEmail("arwekoji@gmail.com"));
-        System.out.println("\"ar wekoji@gmail.com\" это email? " + TextProcessor.isValidEmail("ar wekoji@gmail.com"));
-        System.out.println("\"arwe@koji@gmailcom\" это email? " + TextProcessor.isValidEmail("arwe@koji@gmailcom"));
-        System.out.println("\"arwekoji@gmailcom\" это email? " + TextProcessor.isValidEmail("arwekoji@gmailcom"));
+        for (String exampleEmail : EXAMPLE_EMAILS)
+            System.out.println("\"" + exampleEmail + "\" это email? " + TextProcessor.isValidEmail(exampleEmail));
 
         System.out.println("- - - - - -");
 
         // ЗАДАЧА №3
-        System.out.println("\"А роза упала на лапу Азора\" это палиндром? " + TextProcessor.isPalindrome("А роза упала на лапу Азора"));
-        System.out.println("\"А роза не упала на лапу Азора\" это палиндром? " + TextProcessor.isPalindrome("А роза не упала на лапу Азора"));
+        for (String examplePalindrome : EXAMPLE_PALINDROMES)
+            System.out.println("\"" + examplePalindrome + "\" это палиндром? " + TextProcessor.isPalindrome(examplePalindrome));
     }
 }

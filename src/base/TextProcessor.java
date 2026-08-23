@@ -2,17 +2,13 @@ package base;
 
 /**
  * Класс для обработки входящих строк разными методами
- *
- * @author Артур Федьвереш
  */
 public class TextProcessor {
-
     /**
      * Метод для подсчета слов во фразе
      *
      * @param text Фраза для анализа
      * @return Число строк в формате int
-     * @author Артур Федьвереш
      */
     public static int countWords(String text) {
         if (text.isBlank()) //isBlank включает в себя функцию isEmpty в контексте задачи
@@ -27,7 +23,6 @@ public class TextProcessor {
      *
      * @param email Данные об email для анализа
      * @return Возвращает статус соответствия стандартам (Валидность)
-     * @author Артур Федьвереш
      */
     public static boolean isValidEmail(String email) {
         if (email.contains("\s") || email.indexOf("@") != email.lastIndexOf("@")) // Проверка на число пробелов (0) и "@" (1)
@@ -37,7 +32,6 @@ public class TextProcessor {
             return false;
 
         return true; // Если Ничего не затриггерилось раньше - метод вернет True
-
     }
 
     /**
@@ -45,11 +39,9 @@ public class TextProcessor {
      *
      * @param word Фраза для анализа
      * @return Возвращает True если фраза является палиндромом
-     * @author Артур Федьвереш
      */
     public static boolean isPalindrome(String word) {
         String wordCleaned = word.toLowerCase().replace("\s", ""); // Прежде всего нужно очистить фразу от пробелов и привести в нижний регистр
         return wordCleaned.equals(new StringBuilder(wordCleaned).reverse().toString()); // И только потом сравнивать с зеркальной версией
     }
-
 }
