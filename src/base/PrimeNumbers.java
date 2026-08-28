@@ -44,6 +44,7 @@ public class PrimeNumbers {
     public static void printInfo (byte limit, ArrayList<Integer> SimpleNumbers) {
         System.out.printf("""
                 Простые числа в диапазоне {2 - %d}: %s
-                """, limit, SimpleNumbers);
+                Всего простых чисел: %d
+                """, limit, SimpleNumbers, SimpleNumbers.toArray().length);
     }
 }
