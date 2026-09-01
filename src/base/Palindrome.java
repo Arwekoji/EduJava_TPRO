@@ -9,9 +9,14 @@ public class Palindrome {
      *
      * @param input Вводные данные в формате String для анализа
      */
-    public static boolean check(String input) {
+    private static boolean isPalindrome(String input) {
         input = input.replaceAll("[^a-zA-Zа-яА-Я]", "").toLowerCase();
 
         return input.equals(new StringBuilder(input).reverse().toString());
+    }
+
+    public static void checkAndShow (String input) {
+        System.out.printf("Строка \"%s\" - %sпалиндром", input, Palindrome.isPalindrome(input) ? "" : "не ");
+        System.out.println();
     }
 }

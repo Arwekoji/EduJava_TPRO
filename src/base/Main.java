@@ -26,10 +26,8 @@ public class Main {
 
         System.out.println(" - - - - - - - - -");
 
-        for (String exampleInput : EXAMPLE_PALINDROMES) {
-            System.out.printf("Строка \"%s\" - %sпалиндром", exampleInput, Palindrome.check(exampleInput) ? "" : "не ");
-            System.out.println();
-        }
+        for (String exampleInput : EXAMPLE_PALINDROMES)
+            Palindrome.checkAndShow(exampleInput);
 
         System.out.println(" - - - - - - - - -");
 
