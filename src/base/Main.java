@@ -23,15 +23,13 @@ public class Main {
      */
     public static void main(String[] args) {
         StringAnalyser.analyse(EXAMPLE_PHRASE_1);
-        /* По поводу расхождений с примером в ТЗ:
-        Даже при ручном подсчете строка "Hello, World! 123" имеет длину в 17 символов. Если бы ТЗ требовало указать индекс последнего символа, то было бы вообще 16. Если ошибка с моей стороны, то нужен совет
-        Количество букв равно 10 и при ручном подсчете. ',' и '!' являются символами, а не буквами. Но если ТЗ неправильно воспринято, то можно заменить isLetter на простое условие "ЕСЛИ Это не цифра и не пробел"
-         */
 
         System.out.println(" - - - - - - - - -");
 
-        for (String exampleInput : EXAMPLE_PALINDROMES)
-            Palindrome.check(exampleInput);
+        for (String exampleInput : EXAMPLE_PALINDROMES) {
+            System.out.printf("Строка \"%s\" - %sпалиндром", exampleInput, Palindrome.check(exampleInput) ? "" : "не ");
+            System.out.println();
+        }
 
         System.out.println(" - - - - - - - - -");
 

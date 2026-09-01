@@ -32,6 +32,8 @@ public class StringAnalyser {
                 Последнее вхождение "o":%d
                 Подстрока [0, 5]:"%s"
                 После замены "World" на "Java":"%s"
-                """, input, input.length(), input.toUpperCase(), input.toLowerCase(), input.trim(), spacesCount, digitCount, letterCount, (input.contains("World")) ? "да" : "нет", input.indexOf('o'), input.lastIndexOf('o'), input.substring(0, Math.min(5, input.length())), input.replace("World", "Java")));
+                """, input, input.length(), input.toUpperCase(), input.toLowerCase(), input.trim(), spacesCount, digitCount, letterCount,
+                (input.contains("World")) ? "да" : "нет", input.indexOf('o'), input.lastIndexOf('o'), input.substring(0, Math.min(5, input.length())),
+                input.replace("World", "Java")));
     }
 }
