@@ -39,12 +39,12 @@ public class PrimeNumbers {
      * Процедура вывода найденных в диапазоне простых чисел в консоль
      *
      * @param limit Верхняя граница диапазона поиска простых чисел
-     * @param SimpleNumbers Динамический массив, содержащий найденные простые числа
+     * @param simpleNumbers Динамический массив, содержащий найденные простые числа
      */
-    public static void printInfo (byte limit, ArrayList<Integer> SimpleNumbers) {
+    public static void printInfo (byte limit, ArrayList<Integer> simpleNumbers) {
         System.out.printf("""
                 Простые числа в диапазоне {2 - %d}: %s
                 Всего простых чисел: %d
-                """, limit, SimpleNumbers, SimpleNumbers.toArray().length);
+                """, limit, simpleNumbers, simpleNumbers.size());
     }
 }
