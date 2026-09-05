@@ -8,7 +8,7 @@ public class Circle {
             new Circle(),
             new Circle(95)
     };
-    public static final Circle EXAMPLE_SECOND_CIRCLE = new Circle (10, 50, 50);
+    public static final Circle EXAMPLE_SECOND_CIRCLE = new Circle(10, 50, 50);
     public static final double EXAMPLE_POINT_X = 10, EXAMPLE_POINT_Y = 10;
 
     double radius, centerX, centerY;
@@ -16,11 +16,11 @@ public class Circle {
     /**
      * Конструктор со всеми параметрами
      *
-     * @param radius Радиус окружности
+     * @param radius  Радиус окружности
      * @param centerX Координата Х центра окружности
      * @param centerY Координата Y центра окружности
      */
-    public Circle (double radius, double centerX, double centerY) {
+    public Circle(double radius, double centerX, double centerY) {
         this.radius = radius;
         this.centerX = centerX;
         this.centerY = centerY;
@@ -31,14 +31,14 @@ public class Circle {
      *
      * @param radius Радиус окружности
      */
-    public Circle (double radius) {
-        this (radius, 0, 0);
+    public Circle(double radius) {
+        this(radius, 0, 0);
     }
 
     /**
      * Базовый конструктор окружности в нулевых координатах и с радиусом 1
      */
-    public Circle () {
+    public Circle() {
         this(1);
     }
 
@@ -47,7 +47,7 @@ public class Circle {
      *
      * @param copyCircle Окружность, которую нужно скопировать
      */
-    public Circle (Circle copyCircle) {
+    public Circle(Circle copyCircle) {
         this(copyCircle.radius, copyCircle.centerX, copyCircle.centerY);
     }
 
@@ -56,7 +56,7 @@ public class Circle {
      *
      * @return Площадь круга
      */
-    public double area () {
+    public double area() {
         return Math.pow(Math.PI * radius, 2);
     }
 
@@ -65,7 +65,7 @@ public class Circle {
      *
      * @return Длина окружности
      */
-    public double perimeter () {
+    public double perimeter() {
         return 2 * Math.PI * radius;
     }
 
@@ -86,7 +86,7 @@ public class Circle {
      * @param secondCircle Другая окружность для сравнения
      * @return Статус пересечения данных двух окружностей
      */
-    public boolean intersects (Circle secondCircle) {
+    public boolean intersects(Circle secondCircle) {
         return hypotenuse(secondCircle.centerX, secondCircle.centerY, centerX, centerY) <= radius + secondCircle.radius;
     }
 
@@ -99,9 +99,9 @@ public class Circle {
      * @param y2 Y координата второй точки
      * @return Расстояние между точками
      */
-    public static double hypotenuse (double x1, double y1, double x2, double y2) {
-        double leg1 = Math.abs(x2-x1);
-        double leg2 = Math.abs(y2-y1);
+    public static double hypotenuse(double x1, double y1, double x2, double y2) {
+        double leg1 = Math.abs(x2 - x1);
+        double leg2 = Math.abs(y2 - y1);
 
         return Math.sqrt(Math.pow(leg1, 2) + Math.pow(leg2, 2));
     }
@@ -109,19 +109,19 @@ public class Circle {
     /**
      * Вывод информации об окружности и результатов операций с тестовыми экземплярами
      */
-    public void printInfo () {
+    public void printInfo() {
         System.out.printf("""
-                ————————————————————————————————————————————————————————————————————————————————————
-                ○ (Круг), [%.2f, %.2f], R = %.2f
-                S = %.2f, C = %.2f
-                Точка [%.2f, %.2f] %sрасположена внутри данного круга
-                Второй ○ ([%.2f, %.2f], R=%.2f) %sпересекается с данным
-                ————————————————————————————————————————————————————————————————————————————————————
-                """, centerX, centerY, radius, area(), perimeter(),
+                        ————————————————————————————————————————————————————————————————————————————————————
+                        ○ (Круг), [%.2f, %.2f], R = %.2f
+                        S = %.2f, C = %.2f
+                        Точка [%.2f, %.2f] %sрасположена внутри данного круга
+                        Второй ○ ([%.2f, %.2f], R=%.2f) %sпересекается с данным
+                        ————————————————————————————————————————————————————————————————————————————————————
+                        """, centerX, centerY, radius, area(), perimeter(),
                 EXAMPLE_POINT_X, EXAMPLE_POINT_Y, contains(EXAMPLE_POINT_X, EXAMPLE_POINT_Y) ? "" : "не ",
                 EXAMPLE_SECOND_CIRCLE.centerX, EXAMPLE_SECOND_CIRCLE.centerY, EXAMPLE_SECOND_CIRCLE.radius,
                 intersects(EXAMPLE_SECOND_CIRCLE) ? "" : "не "
-                );
+        );
     }
 
     /**
