@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"assist","l":"AdvancedText"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"base","l":"BankAccount"},{"p":"assist","l":"CodeMetrics"},{"p":"base","l":"Course"},{"p":"base","l":"Main"},{"p":"base","l":"Range"},{"p":"base","l":"Temperature"},{"p":"assist","l":"TestData"}];updateSearchResults();
