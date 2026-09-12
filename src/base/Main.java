@@ -1,15 +1,47 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+package base;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import assist.AdvancedText;
+import assist.CodeMetrics;
+import assist.TestData;
+
+/**
+ * Точка входа в программу по теме 4.3
+ *
+ * @author Артур Федьвереш
+ */
+public class Main {
+    /**
+     * Точка входа в программу по теме 4.3
+     *
+     * @param args Аргументы точки входа
+     */
+    public static void main(String[] args) {
+        CodeMetrics.setTimer();
+
+        AdvancedText.printTaskSeparator(1, "BankAccount");
+        BankAccount.testClass();
+
+        AdvancedText.printTaskSeparator(2, "Temperature");
+        Temperature.testClass();
+
+        AdvancedText.printTaskSeparator(3, "Range");
+        Range.testClass();
+
+        AdvancedText.printTaskSeparator(4, "Record Course");
+        testRecord();
+
+        CodeMetrics.printTimer();
+    }
+
+    /**
+     * Тестовая процедура для демонстрации возможностей Record Course
+     */
+    public static void testRecord() {
+        for (Course course : TestData.COURSES) {
+            course.printInfo();
+            System.out.println(course);
+            System.out.println(String.format("Равенство первого курса и данного: %b", course.equals(TestData.COURSES[0])));
+            System.out.println();
         }
     }
 }
