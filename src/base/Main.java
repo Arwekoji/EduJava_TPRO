@@ -48,3 +48,26 @@ public class Main {
             System.out.println("\"" + examplePalindrome + "\" это палиндром? " + TextProcessor.isPalindrome(examplePalindrome));
     }
 }
+
+/* Задание 2.7 — Методы строк: текстовый процессор
+
+### Задача 1 — Счётчик слов
+
+Метод `int countWords(String text)` — количество слов. Пробелы могут быть множественными. Пустая строка и null → 0.
+
+### Задача 2 — Валидатор email
+
+Метод `boolean isValidEmail(String email)` — проверяет: один @, точка после @, символ до @, нет пробелов. Только методы String, **без** regex.
+
+### Задача 3 — Палиндром
+
+Метод `boolean isPalindrome(String word)` — регистронезависимо, игнорируя пробелы. `"А роза упала на лапу Азора"` → true.
+*/
+
+/* Ожидаемый результат
+- countWords: trim() + split("\\s+"), проверка null/empty
+- isValidEmail: indexOf('@') == lastIndexOf('@'), все 5 условий
+- isPalindrome: toLowerCase() + replace(" ","") + сравнение с reverse
+- Все методы static, возвращают значение (не println)
+
+ */
