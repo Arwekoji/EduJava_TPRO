@@ -61,6 +61,9 @@ public class TextProcessor {
      * @return Возвращает True если фраза является палиндромом
      */
     public static boolean isPalindrome(String word) {
+        if(word == null)
+            throw new IllegalArgumentException("Нет строки для анализа!");
+
         String wordCleaned = word.toLowerCase().replace("\s", ""); // Прежде всего нужно очистить фразу от пробелов и привести в нижний регистр
         return wordCleaned.equals(new StringBuilder(wordCleaned).reverse().toString()); // И только потом сравнивать с зеркальной версией
     }
