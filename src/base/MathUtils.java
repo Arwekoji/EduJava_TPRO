@@ -109,7 +109,7 @@ public class MathUtils {
      */
     public static long power(int base, int exp) {
         int answer = base;
-        if (base == 0) return 1; // 0 в любой степени равен 1
+        if (exp == 0) return 1; // Любое основание в 0 степени равно 1
 
         for (int i = 2; i <= exp; i++)
             answer *= base;
