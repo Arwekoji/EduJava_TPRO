@@ -15,7 +15,7 @@ public class CodeMetrics {
      * Сеттер таймера, который отслеживает время работы программы
      */
     public static void setTimer () {
-        lastMeasure = LocalTime.now();;
+        lastMeasure = LocalTime.now();
     }
 
     /**
