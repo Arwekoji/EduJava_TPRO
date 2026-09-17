@@ -32,7 +32,8 @@ public class TextProcessor {
             return false;
 
         // email не может начинаться или заканчиваться на символы вроде '-', '.' или '@'
-        if (DISALLOWED_EDGE_SYMBOLS.contains(email.charAt(0)) || DISALLOWED_EDGE_SYMBOLS.contains(email.charAt(email.length() - 1)))
+        if (DISALLOWED_EDGE_SYMBOLS.contains(String.valueOf(email.charAt(0))) ||
+                DISALLOWED_EDGE_SYMBOLS.contains(String.valueOf(email.charAt(email.length() - 1))))
             return false;
 
         if (email.indexOf("@") != email.lastIndexOf("@") || email.indexOf("@") > email.lastIndexOf("."))      // Проверка на число "@" (1) и наличие точки после неё
@@ -44,10 +45,10 @@ public class TextProcessor {
         for (int i = 0; i < email.length(); i++) { // Проверка на соответствие разрешенными символам или дублирование особых символов в списке ALLOWED_CHARS
             char symbol = email.charAt(i);
 
-            if (!ALLOWED_CHARS.contains(symbol) && !symbol.isLetter() && && !symbol.isDigit()) // Это также является аналогом email.contains("\s")
+            if (!ALLOWED_CHARS.contains(String.valueOf(symbol)) && !Character.isLetter(symbol) && !Character.isDigit(symbol)) // Это также является аналогом email.contains("\s")
                 return false;
 
-            if (i > 0 && ALLOWED_CHARS.contains(symbol) && symbol.equals(email.charAt(i - 1)))
+            if (i > 0 && ALLOWED_CHARS.contains(String.valueOf(symbol)) && symbol == email.charAt(i - 1))
                 return false;
         }
 
