@@ -1,8 +1,5 @@
 package base;
 
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
 /**
  * Точка входа в программу
  *

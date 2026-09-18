@@ -1,8 +1,5 @@
 package base;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Класс для обработки входящих строк разными методами
  */
@@ -35,17 +32,17 @@ public class TextProcessor {
             return false;
 
         // 1. Поиск ровно 1 символа @. Ни больше, ни меньше
-        if(!email.contains("@") || email.indexOf("@") != email.lastIndexOf("@"))
+        if (!email.contains("@") || email.indexOf("@") != email.lastIndexOf("@"))
             return false;
 
         // 2. Поиск точки после @, как части доменного имени
-        if(email.lastIndexOf(".") < email.indexOf("@"))
+        if (email.lastIndexOf(".") < email.indexOf("@"))
             return false;
 
         // 3. Фильтр ищет неразрешенные символы через группу [^]
         // 4. Фильтр ищет неразрешенные по краям символы через группы ^[]|[]$
         // 5. Фильтр ищет неразрешенные комбинации ".." и "@." через условную конструкцию \.\.|@\.
-        if(!email.replaceAll("^[@.-]|[@.-]$|\\.\\.|@\\.|[^а-яА-ЯёЁ\\w@+%.-]", "").equals(email))
+        if (!email.replaceAll("^[@.-]|[@.-]$|\\.\\.|@\\.|[^а-яА-ЯёЁ\\w@+%.-]", "").equals(email))
             return false;
 
         // 6. Проверка на длину доменного имени 1 уровня. Не может быть короче 2 символов. Плюс, точка должна быть после собаки
@@ -79,7 +76,7 @@ public class TextProcessor {
      * @return Возвращает True если фраза является палиндромом
      */
     public static boolean isPalindrome(String word) {
-        if(word == null)
+        if (word == null)
             throw new IllegalArgumentException("Нет строки для анализа!");
 
         String wordCleaned = word.toLowerCase().replace("\s", ""); // Прежде всего нужно очистить фразу от пробелов и привести в нижний регистр
