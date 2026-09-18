@@ -1,5 +1,8 @@
 package base;
 
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 /**
  * Точка входа в программу
  *
@@ -18,6 +21,8 @@ public class Main {
             "arwekoji@gmail.com",
             "ar wekoji@gmail.com",
             "arwe@koji@gmailcom",
+            "arwekojigmailcom",
+            "-arweekojig@mailcom-",
             "arwekoji@gmailcom"
     };
     public static String[] EXAMPLE_PALINDROMES = {

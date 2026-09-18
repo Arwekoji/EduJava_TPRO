@@ -1,5 +1,8 @@
 package base;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Класс для обработки входящих строк разными методами
  */
@@ -28,32 +31,46 @@ public class TextProcessor {
      * @return Возвращает статус соответствия стандартам (Валидность)
      */
     public static boolean isValidEmail(String email) {
-        if (email == null) // null-safety
+        if (email == null) // 0. null-safety
             return false;
 
-        // email не может начинаться или заканчиваться на символы вроде '-', '.' или '@'
-        if (DISALLOWED_EDGE_SYMBOLS.contains(String.valueOf(email.charAt(0))) ||
-                DISALLOWED_EDGE_SYMBOLS.contains(String.valueOf(email.charAt(email.length() - 1))))
+        // 1. Поиск ровно 1 символа @. Ни больше, ни меньше
+        if(!email.contains("@") || email.indexOf("@") != email.lastIndexOf("@"))
             return false;
 
-        if (email.indexOf("@") != email.lastIndexOf("@") || email.indexOf("@") > email.lastIndexOf("."))      // Проверка на число "@" (1) и наличие точки после неё
+        // 2. Поиск точки после @, как части доменного имени
+        if(email.lastIndexOf(".") < email.indexOf("@"))
             return false;
 
-        if (email.lastIndexOf(".") >= email.length() - 2 || email.lastIndexOf(".") - email.indexOf("@") < 3)  // Проверка на длину доменного имени
+        // 3. Фильтр ищет неразрешенные символы через группу [^]
+        // 4. Фильтр ищет неразрешенные по краям символы через группы ^[]|[]$
+        // 5. Фильтр ищет неразрешенные комбинации ".." и "@." через условную конструкцию \.\.|@\.
+        if(!email.replaceAll("^[@.-]|[@.-]$|\\.\\.|@\\.|[^а-яА-ЯёЁ\\w@+%.-]", "").equals(email))
             return false;
 
-        for (int i = 0; i < email.length(); i++) { // Проверка на соответствие разрешенными символам или дублирование особых символов в списке ALLOWED_CHARS
-            char symbol = email.charAt(i);
-
-            if (!ALLOWED_CHARS.contains(String.valueOf(symbol)) && !Character.isLetter(symbol) && !Character.isDigit(symbol)) // Это также является аналогом email.contains("\s")
-                return false;
-
-            if (i > 0 && ALLOWED_CHARS.contains(String.valueOf(symbol)) && symbol == email.charAt(i - 1))
-                return false;
-        }
+        // 6. Проверка на длину доменного имени 1 уровня. Не может быть короче 2 символов. Плюс, точка должна быть после собаки
+        if (email.lastIndexOf(".") >= email.length() - 2)
+            return false;
 
         return true; // Если Ничего не затриггерилось раньше - метод вернет True
+
     }
+/* СПИСОК НЕОБХОДИМЫХ ПРОВЕРОК ДЛЯ ВАЛИДАЦИИ EMAIL
+        0. null-safety (Рассматриваемый email не равен null)
+        1. Символ '@' есть и в единственном экземпляре
+        2. После @ должна присутствовать хотя бы одна точка (как часть доменного имени)
+        3. Разрешенные символы: isDigit, isLetter и @.-_%+
+        4. Запрещенные по краям символы: '@', '.', '-'
+        5. Запрещенные комбинации: ".." и "@."
+        6. Домен 1 уровня должен быть минимум 2 символа в длину
+        7. Домены 2 и ниже уровней могут быть минимум 1 символа в длину. Выполняется автоматически в 4 пункте
+        8. Название email до @, доменные имена разных уровней, разделенные точками. Все это выполняется автоматически прошлыми пунктами
+
+        P.S.
+        1. Попытаться сделать проверки на запрещенные комбинации или символы через регулярные выражения
+            Для этого можно использовать либо встроенные методы String, либо Pattern compile + matcher
+        2. Упрощать условные конструкции до читаемого вида без лишних вложений
+*/
 
     /**
      * Метод для проверки фразы на палиндромность с игнорированием пробелов и регистра
@@ -81,4 +98,14 @@ isValidEmail - нужно дополнить следующими проверк
 5) Не должно быть комбинации '@.'
 
 isPalindrome по хорошему тоже лучше null-safety добавить
+
+-------------------------------------------------------------
+
+Не хватает проверки, что строка содержит '@'. Твои проверки пропустят строку без @.
+
+if (i > 0 && ALLOWED_CHARS.contains(String.valueOf(symbol)) && symbol == email.charAt(i - 1))
+    return false;
+вот эту проверку надо упростить, нужно просто проверить, что нет '..' подряд  '++' и '__' могут быть
+
+И проверки на допустимые символы лучше сделать через регулярные выражения для тренировки
  */
