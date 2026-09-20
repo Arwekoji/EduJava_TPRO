@@ -4,8 +4,6 @@ package base;
  * Класс для обработки входящих строк разными методами
  */
 public class TextProcessor {
-    public static final String DISALLOWED_EDGE_SYMBOLS = "@-.";
-    public static final String ALLOWED_CHARS = "@.-_+%"; // + isLetter() + isDigit()
 
     /**
      * Метод для подсчета слов во фразе
