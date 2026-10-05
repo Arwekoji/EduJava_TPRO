@@ -13,7 +13,6 @@ public class ArrayStats {
     /**
      * Запись со статистикой указанного массива
      *
-     * @param array            Анализируемый одномерный массив с int элементами
      * @param sum              Сумма элементов
      * @param arithmeticMean   Среднее арифметическое
      * @param maxIndex         Индекс элемента с наибольшим значением
@@ -23,43 +22,27 @@ public class ArrayStats {
      * @param quantityPositive Количество положительных элементов
      * @param quantityNegative Количество отрицательных элементов
      */
-    public record Stats(int[] array,
-                        int sum, float arithmeticMean,
-                        int maxIndex, int minIndex,
+    public record Stats(int sum, float arithmeticMean,
+                        int max, int maxIndex,
+                        int min, int minIndex,
                         int quantityEven, int quantityOdd,
                         int quantityPositive, int quantityNegative) {
 
         @Override
         public String toString() {
             return String.format("""
-                            Массив: %s
                             Сумма: %d
                             Среднее: %.2f
                             Максимум: %d (индекс %d)
                             Минимум: %d (индекс %d)
                             Чётных: %d, нечётных: %d
                             Положительных: %d, отрицательных: %d
-                            """, Arrays.toString(array),
+                            """,
                     sum, arithmeticMean,
-                    array[maxIndex], maxIndex,
-                    array[minIndex], minIndex,
+                    max, maxIndex,
+                    min, minIndex,
                     quantityEven, quantityOdd,
                     quantityPositive, quantityNegative);
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (o == null || getClass() != o.getClass()) return false;
-            Stats stats = (Stats) o;
-            return sum == stats.sum && minIndex == stats.minIndex && maxIndex == stats.maxIndex &&
-                    quantityOdd == stats.quantityOdd && quantityEven == stats.quantityEven &&
-                    Float.compare(arithmeticMean, stats.arithmeticMean) == 0 &&
-                    quantityNegative == stats.quantityNegative && quantityPositive == stats.quantityPositive && Objects.deepEquals(array, stats.array);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(Arrays.hashCode(array), sum, arithmeticMean, minIndex, maxIndex, quantityEven, quantityOdd, quantityNegative, quantityPositive);
         }
     }
 
@@ -107,7 +90,7 @@ public class ArrayStats {
 
         arithmeticMean = (float) sum / array.length;
 
-        return new Stats(array, sum, arithmeticMean, maxIndex, minIndex, even, odd, positive, negative);
+        return new Stats(sum, arithmeticMean, array[maxIndex], maxIndex, array[minIndex], minIndex, even, odd, positive, negative);
     }
 
     /**
@@ -118,7 +101,7 @@ public class ArrayStats {
      */
     public static Stats analyzeArray(int[] array) {
         Stats arrayStats = getStats(array);
-        System.out.print(arrayStats);
+        System.out.printf("Массив: %s%n%s", Arrays.toString(array), arrayStats);
         return arrayStats;
     }
 
@@ -130,7 +113,7 @@ public class ArrayStats {
     public static boolean runTests() {
         return runTests(
                 new int[]{5, -3, 8, 1, -9, 2, 7, 4},
-                new Stats(new int[]{5, -3, 8, 1, -9, 2, 7, 4}, 15, 1.875f, 2, 4, 3, 5, 6, 2)
+                new Stats(15, 1.875f, 8, 2, -9, 4, 3, 5, 6, 2)
         );
     }
 

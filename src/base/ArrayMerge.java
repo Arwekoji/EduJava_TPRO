@@ -47,11 +47,21 @@ public final class ArrayMerge {
             if (element % 2 == 0)
                 resultArray.add(element);
 
+        return resultArray.stream().mapToInt(Integer :: intValue).toArray();
+
+        /*
+        resultArray.toArray() не работает с конвертацией объектов в примитивный тип данных
+        Поэтому ранее был выбран вариант с ручным циклом (Сохранен ниже в комментарии)
+        stream(0) пишется более компактно, но в то же время считается менее оптимизированным
+         */
+
+        /*
         int[] primitiveArray = new int[resultArray.size()];
         for (int i = 0; i < resultArray.size(); i++)
             primitiveArray[i] = resultArray.get(i);
 
         return primitiveArray;
+        */
     }
 
     /**
