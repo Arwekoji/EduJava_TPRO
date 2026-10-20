@@ -1,9 +1,10 @@
 package base;
 
+import chessgame.GameBoard;
+import utils.ConsolePatterns;
+
 /**
  * Точка входа
- *
- * @author Артур Федьвереш
  */
 public class Main {
 
@@ -11,37 +12,21 @@ public class Main {
      * Метод точки входа в программу
      *
      * @param args Аргументы точки входа
-     * @author Артур Федьвереш
      */
     public static void main(String[] args) {
-        // 1 Задача
-        MatrixOps.getMatrix();
-        System.out.println("- - - - - - - -");
+        ConsolePatterns.printTaskHeader(3.3, "Многомерные массивы");
 
-        // 2 задача
-        MatrixTransform.transposition();
-        System.out.println("- - - - - - - -");
+        ConsolePatterns.printTaskSeparator(1, "Class", "MatrixOps");
+        MatrixOps.runTests();
 
-        // 3 задача
-        GameBoard.getField();
-        System.out.println("- - - - - - - -");
+        ConsolePatterns.printTaskSeparator(2, "Class", "MatrixTransform");
+        MatrixTransform.runTests();
 
-        // 4 задача
-        PascalTriangle.getTriangle(8);
+        ConsolePatterns.printTaskSeparator(3, "Class", "GameBoard");
+        GameBoard.runTests();
+
+        ConsolePatterns.printTaskSeparator(4, "Class", "PascalTriangle");
+        PascalTriangle.runTests();
     }
-
-    /**
-     * Функция факториала
-     *
-     * @param n Число, необходимое возвести в факториал
-     * @return Число после возведения в факториал
-     */
-    public static int factorial(int n) {
-        int result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
-        }
-        return result;
-    }
-
 }
+
