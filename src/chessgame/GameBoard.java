@@ -100,7 +100,8 @@ public class GameBoard {
                     if (figure == comparedFigure)
                         continue;
 
-                    System.out.printf("(%s %s[%s]) ", comparedFigure.isWhite ? "White" : "Black", comparedFigure.name, comparedFigure.position);
+                    if(figure.checkSimpleAttack(comparedFigure.position))
+                        System.out.printf("(%s %s[%s]) ", comparedFigure.isWhite ? "White" : "Black", comparedFigure.name, comparedFigure.position);
                 }
                 System.out.println();
             }
