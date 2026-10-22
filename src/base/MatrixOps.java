@@ -73,7 +73,6 @@ public class MatrixOps {
      * @return Запись с вычисленными параметрами матрицы
      */
     public static MatrixStats getMatrixStats(int[][] matrix) {
-        // null-safety?
         if (matrix == null)
             throw new IllegalArgumentException("Нельзя получить статистику у несуществующего массива");
 
@@ -98,6 +97,12 @@ public class MatrixOps {
         }
 
         return new MatrixStats(sumTotal, sumDiagonal, sumDiagonalAnti, maxByRows, sumByCols);
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        System.out.printf("Analysed square matrix (size %dx%d):%n", matrix.length, matrix.length);
+        for (int[] matrixRow : matrix)
+            System.out.println(Arrays.toString(matrixRow));
     }
 
     /**
@@ -126,9 +131,7 @@ public class MatrixOps {
         try {
             MatrixStats actualStats = getMatrixStats(inputMatrix);
 
-            System.out.printf("Analysed square matrix (size %dx%d):%n", inputMatrix.length, inputMatrix.length);
-            for (int[] matrixRow : inputMatrix)
-                System.out.println(Arrays.toString(matrixRow));
+            printMatrix(inputMatrix);
 
             System.out.println();
             System.out.println(actualStats);
