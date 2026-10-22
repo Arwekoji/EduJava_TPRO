@@ -99,6 +99,11 @@ public class MatrixOps {
         return new MatrixStats(sumTotal, sumDiagonal, sumDiagonalAnti, maxByRows, sumByCols);
     }
 
+    /**
+     * Распечатывает в консоль содержимое матричного массива
+     *
+     * @param matrix Матричный массив (Квадратный, прямоугольный, зубчатый - любой)
+     */
     public static void printMatrix(int[][] matrix) {
         System.out.printf("Analysed square matrix (size %dx%d):%n", matrix.length, matrix.length);
         for (int[] matrixRow : matrix)
