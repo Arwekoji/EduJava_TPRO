@@ -9,9 +9,10 @@ import static base.Main.LAST_NAME_EXAMPLES;
  * Класс для хранения и валидации данных о студентах
  */
 public class Student {
-    public static final int MINIMUM_AGE = 18;
-    public static final String[] GROUP_NAME_EXAMPLES = {"А", "Б", "Дикие лебеди"};
     public static final short STUDENTS_QUANTITY = 3;
+    private static final int MINIMUM_AGE = 18;
+    private static final String[] GROUP_NAME_EXAMPLES = {"А", "Б", "Дикие лебеди"};
+    private static final double AVERAGE_SCORE = 4.5;
 
     String name, group;
     int age;
@@ -25,7 +26,7 @@ public class Student {
      * @param scoreAverage Средний балл успеваемости
      * @param group        Группа студента
      */
-    public Student(String name, int age, double scoreAverage, String group) {
+    public Student(String name, String group, int age, double scoreAverage) {
         this.name = name;
         this.group = group;
         this.age = age;
@@ -39,9 +40,9 @@ public class Student {
         this(
                 FIRST_NAME_EXAMPLES[ThreadLocalRandom.current().nextInt(0, FIRST_NAME_EXAMPLES.length)] + " " +
                         LAST_NAME_EXAMPLES[ThreadLocalRandom.current().nextInt(0, LAST_NAME_EXAMPLES.length)],
+                GROUP_NAME_EXAMPLES[ThreadLocalRandom.current().nextInt(0, GROUP_NAME_EXAMPLES.length)],
                 ThreadLocalRandom.current().nextInt(10, 60),
-                ThreadLocalRandom.current().nextDouble(0, 10),
-                GROUP_NAME_EXAMPLES[ThreadLocalRandom.current().nextInt(0, GROUP_NAME_EXAMPLES.length)]
+                ThreadLocalRandom.current().nextDouble(0, 10)
         );
     }
 
@@ -77,7 +78,7 @@ public class Student {
      * @return Статус отличника
      */
     private boolean isExcellent() {
-        return scoreAverage >= 4.5f;
+        return scoreAverage >= AVERAGE_SCORE;
     }
 
 }

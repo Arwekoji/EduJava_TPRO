@@ -6,98 +6,87 @@ package base;
 public class Temperature {
     public static final double TEMPERATURE_EXAMPLE = 0;
 
-    double value;
+    double celsiusValue;
+
+    /**
+     * Конструктор, с указанием значения и типа температуры
+     *
+     * @param celsiusValue Значение температуры по шкале Цельсия
+     */
+    public Temperature(double celsiusValue) {
+        this.celsiusValue = celsiusValue;
+    }
 
     /**
      * Фабрикатор, принимающий на вход температуру в цельсиях
      *
-     * @param value Температура в цельсиях
-     * @return Запись температуры в цельсиях
+     * @param celsiusValue Температура в цельсиях
+     * @return Объект записи температуры в цельсиях
      */
-    public static Temperature fromCelsius(double value) {
-        return new Temperature(value);
+    public static Temperature fromCelsius(double celsiusValue) {
+        return new Temperature(celsiusValue);
     }
 
     /**
      * Фабрикатор, принимающий на вход температуру в фаренгейтах
      *
-     * @param value Температура в фаренгейтах
-     * @return Запись температуры в цельсиях
+     * @param fahrenheitValue Температура в фаренгейтах
+     * @return Объект записи температуры в цельсиях
      */
-    public static Temperature fromFahrenheit(double value) {
-        Temperature temperature = new Temperature(value);
-        temperature.toCelsius("Fahrenheit");
-        return temperature;
+    public static Temperature fromFahrenheit(double fahrenheitValue) {
+        return new Temperature(toCelsius(fahrenheitValue, TemperatureTypes.FAHRENHEIT));
     }
 
     /**
      * Фабрикатор, принимающий на вход температуру в кельвинах
      *
-     * @param value Температура в кельвинах
-     * @return Запись температуры в цельсиях
+     * @param kelvinValue Температура в кельвинах
+     * @return Объект записи температуры в цельсиях
      */
-    public static Temperature fromKelvin(double value) {
-        Temperature temperature = new Temperature(value);
-        temperature.toCelsius("Kelvin");
-        return temperature;
+    public static Temperature fromKelvin(double kelvinValue) {
+        return new Temperature(toCelsius(kelvinValue, TemperatureTypes.KELVIN));
     }
 
     /**
-     * Конструктор, с указанием значения температуры
+     * Конвертация температуры в значение по шкале Цельсия
      *
-     * @param value Значение температуры (Безразмерно)
-     */
-    public Temperature(double value) {
-        this.value = value;
-    }
-
-    /**
-     * Конвертация содержимого записи в значение по шкале Цельсия
-     *
+     * @param value Изначальное значение температуры
      * @param currentType Указание из какого типа нужно конвертировать температуру
      */
-    public void toCelsius(String currentType) {
-        switch (currentType) {
-            case "Fahrenheit":
-                value = (value - 32) * 5 / 9;
-                break;
-            case "Kelvin":
-                value -= 273.15;
-                break;
-        }
+    public static double toCelsius(double value, TemperatureTypes currentType) {
+        return switch (currentType) {
+            case FAHRENHEIT -> (value - 32) * 5 / 9;
+            case KELVIN -> value - 273.15;
+            default -> value;
+        };
     }
 
     /**
-     * Конвертация содержимого записи в значение по шкале Фаренгейта
+     * Конвертация температуры в значение по шкале Фаренгейта
      *
+     * @param value Изначальное значение температуры
      * @param currentType Указание из какого типа нужно конвертировать температуру
      */
-    public void toFahrenheit(String currentType) {
-        switch (currentType) {
-            case "Celsius":
-                value = 32 + value * 9 / 5;
-                break;
-            case "Kelvin":
-                value = 32 + (value - 273.15) * 9 / 5;
-                ;
-                break;
-        }
+    public static double toFahrenheit(double value, TemperatureTypes currentType) {
+        return switch (currentType) {
+            case CELSIUS -> 32 + value * 9 / 5;
+            case KELVIN -> 32 + (value - 273.15) * 9 / 5;
+            default -> value;
+        };
     }
 
     /**
-     * Конвертация содержимого записи в значение по шкале Кельвина
+     * Конвертация температуры в значение по шкале Кельвина
      *
+     * @param value Изначальное значение температуры
      * @param currentType Указание из какого типа нужно конвертировать температуру
      */
-    public void toKelvin(String currentType) {
-        switch (currentType) {
-            case "Celsius":
-                value = value - 273;
-                break;
-            case "Fahrenheit":
-                value = ((value - 32) * 5 / 9) + 273.15;
-                break;
-        }
+    public static double toKelvin(double value, TemperatureTypes currentType) {
+        return switch (currentType) {
+            case CELSIUS -> value + 273.15;
+            case FAHRENHEIT -> ((value - 32) * 5 / 9) + 273.15;
+            default -> value;
+        };
     }
 
     /**
@@ -105,15 +94,15 @@ public class Temperature {
      */
     public void printAll() {
         System.out.printf("""
-                Температура: 
+                Температура (%.2f):
                 (C°): %.2f
-                """, value);
-        toFahrenheit("Celsius");
-        System.out.println(String.format("(F): %.2f", value));
-        toKelvin("Fahrenheit");
-        System.out.println(String.format("(K): %.2f", value));
-        System.out.println();
-        toCelsius("Kelvin"); // Даже несмотря на то, что в тесте объект больше не будет использоваться, нужно привести его в изначальную форму
+                (F):  %.2f
+                (K): %.2f
+                
+                """, celsiusValue,
+                toCelsius(celsiusValue, TemperatureTypes.CELSIUS),
+                toFahrenheit(celsiusValue, TemperatureTypes.CELSIUS),
+                toKelvin(celsiusValue, TemperatureTypes.CELSIUS));
     }
 
     /**

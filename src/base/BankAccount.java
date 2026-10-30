@@ -45,7 +45,10 @@ public class BankAccount {
      * @param addition Сумма для пополнения счёта. Не может быть меньше нуля
      */
     protected void deposit(int addition) {
-        balance += Math.max(addition, 0);
+        if (addition >= 0)
+            balance += Math.max(addition, 0);
+        else
+            System.out.println("Невозможно положить на счёт отрицательную сумму!");
     }
 
     /**
@@ -66,7 +69,7 @@ public class BankAccount {
      * @return Баланс счёта
      */
     protected double getBalance() {
-        return new Double(balance);
+        return balance;
     }
 
     /**
@@ -75,7 +78,7 @@ public class BankAccount {
      * @return Количество счетов в банке
      */
     static protected long getTotalAccounts() {
-        return new Long(totalAccounts);
+        return totalAccounts;
     }
 
     /**
